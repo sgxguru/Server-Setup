@@ -50,7 +50,7 @@ case ${answer:0:1} in
         sudo echo "netmask $subnet" >> $interfaceTemp
         sudo echo "broadcast $broadcast" >> $interfaceTemp
         sudo echo "gateway $gateway" >> $interfaceTemp
-        sudo echo "nameserver $nameserver" >> $interfaceTemp
+        sudo echo "dns-nameservers $nameserver" >> $interfaceTemp
         sudo cp $interfaceTemp $interfaceFile
         #rm $interfaceTemp
     ;;
