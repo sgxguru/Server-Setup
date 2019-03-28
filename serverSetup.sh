@@ -17,6 +17,23 @@ case ${answer:0:1} in
         echo "Skipping LAMP Install"
     ;;
 esac
+read -p "Install Webmin on this server (y/n)? " answer
+case ${answer:0:1} in
+    y|Y )
+        sudo apt-get -y update && sudo apt-get -y upgrade
+        #Install Webmin
+        sudo echo 'deb https://download.webmin.com/download/repository sarge contrib' | sudo tee -a /etc/apt/sources.list.d/webmin.list
+        wget http://www.webmin.com/jcameron-key.asc
+        sudo apt-key add jcameron-key.asc
+        sudo apt-get update
+        sudo apt-get install apt-transport-https
+        sudo apt-get install webmin
+    ;;
+    * )
+        echo "Skipping Webmin Install"
+    ;;
+esac
+
 read -p "Set Static IP Address (y/n)? " answer
 case ${answer:0:1} in
     y|Y )
