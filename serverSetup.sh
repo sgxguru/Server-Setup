@@ -17,6 +17,18 @@ case ${answer:0:1} in
         echo "Skipping LAMP Install"
     ;;
 esac
+read -p "Install PHPMyAdmin on this server (y/n)? " answer
+case ${answer:0:1} in
+    y|Y )
+        #Install LAMP if not already installed and
+        #Install PHPmyadmin
+        sudo apt-get -y update
+        sudo apt-get -y install phpmyadmin php-mbstring php-gettext mysql-server php libapache2-mod-php php-mysql apache2
+    ;;
+    * )
+        echo "Skipping PHPMyadmin Install"
+    ;;
+esac
 read -p "Install Webmin on this server (y/n)? " answer
 case ${answer:0:1} in
     y|Y )
